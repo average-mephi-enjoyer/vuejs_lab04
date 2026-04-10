@@ -7,5 +7,5 @@ class User {
     }
     hello() { console.log(`Hi! My name is ${this.name}. And I am ${this.age} years old.`); }
 }
-const user1 = new User("Alex", 52);
-user1.hello();
+let user = new User("Artem", 52);
+user.hello();

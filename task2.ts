@@ -11,7 +11,7 @@ interface userInterface {
     hello(): void { console.log(`Hi! My name is ${this.name}. And I am ${this.age} years old.`); }
   }
   
-  const user1: userInterface = new User("Alex", 52);
-  user1.hello();
+  let user: userInterface = new User("Artem", 52);
+  user.hello();
   
   export {};
