@@ -28,15 +28,11 @@ class tNode {
   
     private insertNode(node: tNode, newNode: tNode): void {
       if (newNode.value < node.value)
-        if (node.left === null)
-          node.left = newNode;
-        else
-          this.insertNode(node.left, newNode);
+        if (node.left === null) node.left = newNode;
+        else this.insertNode(node.left, newNode);
       else
-        if (node.right === null)
-          node.right = newNode;
-        else
-          this.insertNode(node.right, newNode);
+        if (node.right === null) node.right = newNode;
+        else this.insertNode(node.right, newNode);
     }
 
     search(value: number): boolean {
@@ -71,8 +67,7 @@ class tNode {
       if (node.right === null) return node.left;
   
       let minRight = node.right;
-      while (minRight.left !== null)
-        minRight = minRight.left;
+      while (minRight.left !== null) minRight = minRight.left;
       
       node.value = minRight.value;
       node.right = this.deleteNode(node.right, minRight.value);
