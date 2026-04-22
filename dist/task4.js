@@ -11,4 +11,5 @@ console.log(distance(0, 0, 3, 4));
 let p1 = { x: 0, y: 0 };
 let p2 = { x: 3, y: 4 };
 console.log(distance(p1, p2));
+
 // Math.hypot() ??

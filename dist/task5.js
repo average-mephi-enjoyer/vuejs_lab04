@@ -19,21 +19,65 @@ class BST {
         this.insertNode(this.root, newNode);
     }
     insertNode(node, newNode) {
-        if (newNode.value < node.value) {
-            if (node.left === null) {
+        if (newNode.value < node.value)
+            if (node.left === null)
                 node.left = newNode;
-            }
-            else {
+            else
                 this.insertNode(node.left, newNode);
-            }
+        else if (node.right === null)
+            node.right = newNode;
+        else
+            this.insertNode(node.right, newNode);
+    }
+    search(value) {
+        return this.searchNode(this.root, value);
+    }
+    searchNode(node, value) {
+        if (node === null)
+            return false;
+        if (value === node.value)
+            return true;
+        if (value < node.value)
+            return this.searchNode(node.left, value);
+        return this.searchNode(node.right, value);
+    }
+    delete(value) {
+        this.root = this.deleteNode(this.root, value);
+    }
+    deleteNode(node, value) {
+        if (node === null)
+            return null;
+        if (value < node.value) {
+            node.left = this.deleteNode(node.left, value);
+            return node;
         }
-        else {
-            if (node.right === null) {
-                node.right = newNode;
-            }
-            else {
-                this.insertNode(node.right, newNode);
-            }
+        if (value > node.value) {
+            node.right = this.deleteNode(node.right, value);
+            return node;
         }
+        if (node.left === null)
+            return node.right;
+        if (node.right === null)
+            return node.left;
+        let minRight = node.right;
+        while (minRight.left !== null)
+            minRight = minRight.left;
+        node.value = minRight.value;
+        node.right = this.deleteNode(node.right, minRight.value);
+        return node;
+    }
+    update(oldValue, newValue) {
+        this.delete(oldValue);
+        this.insert(newValue);
+    }
+    height() {
+        return this.heightNode(this.root);
+    }
+    heightNode(node) {
+        if (node === null)
+            return 0;
+        let leftHeight = this.heightNode(node.left);
+        let rightHeight = this.heightNode(node.right);
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 }
