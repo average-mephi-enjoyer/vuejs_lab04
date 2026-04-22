@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 class tNode {
     constructor(value) {
         this.value = value;
@@ -81,3 +82,17 @@ class BST {
         return 1 + Math.max(leftHeight, rightHeight);
     }
 }
+let bst = new BST();
+bst.insert(10);
+bst.insert(5);
+bst.insert(15);
+bst.insert(3);
+bst.insert(7);
+console.log("Search 7:", bst.search(7));
+console.log("Search 99:", bst.search(99));
+console.log("Height:", bst.height());
+bst.update(5, 6);
+console.log("Search 5 after update:", bst.search(5));
+console.log("Search 6 after update:", bst.search(6));
+bst.delete(6);
+console.log("Search 6 after delete:", bst.search(6));
